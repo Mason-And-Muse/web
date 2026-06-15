@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mason &amp; Muse, LLC</title>
+  <meta name="description" content="Mason &amp; Muse, LLC" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#faf8f4" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#1f1c18" media="(prefers-color-scheme: dark)" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Mason &amp; Muse, LLC" />
+  <meta property="og:description" content="Mason &amp; Muse, LLC" />
+  <meta property="og:url" content="https://masonandmuse.com/" />
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <style>
+    :root {
+      --bg-top: #faf8f4;
+      --bg-bottom: #efe9df;
+      --ink: #25201b;
+      --muted: #8a7f72;
+      --rule: #c2a878;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-top: #1f1c18;
+        --bg-bottom: #14110e;
+        --ink: #f3ece1;
+        --muted: #a99a87;
+        --rule: #7a6647;
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+
+    body {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      background: linear-gradient(160deg, var(--bg-top), var(--bg-bottom));
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    main {
+      text-align: center;
+      animation: rise 1.1s cubic-bezier(.2, .7, .2, 1) both;
+    }
+
+    .wordmark {
+      margin: 0;
+      font-family: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, "Hoefler Text", Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      line-height: 1.05;
+      font-size: clamp(2.6rem, 9vw, 5.5rem);
+    }
+    .wordmark .amp {
+      font-style: italic;
+      font-weight: 400;
+      padding: 0 0.04em;
+    }
+
+    .rule {
+      width: clamp(48px, 12vw, 96px);
+      height: 1px;
+      margin: 1.7rem auto;
+      background: var(--rule);
+      border: 0;
+    }
+
+    .legal {
+      margin: 0;
+      font-size: clamp(0.7rem, 2.4vw, 0.82rem);
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-left: 0.34em; /* optical centering for trailing letter-spacing */
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      main { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1 class="wordmark">Mason <span class="amp">&amp;</span> Muse</h1>
+    <hr class="rule" />
+    <p class="legal">LLC</p>
+  </main>
+</body>
+</html>
