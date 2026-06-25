@@ -307,6 +307,35 @@ p { margin: 0 0 1.1rem; }
 .split-top { align-items: start; }
 @media (max-width: 760px) { .split { grid-template-columns: 1fr; } }
 
+/* Home intro: the portrait sits beside the heading + body on wide screens; when
+   it collapses, the order becomes heading -> portrait -> body. The heading and
+   body are separate grid items so the photo can slot between them on mobile. */
+.intro-split {
+  display: grid;
+  align-items: center;
+  column-gap: clamp(2rem, 6vw, 4rem);
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "head  media"
+    "body  media";
+}
+.intro-head  { grid-area: head; }
+.intro-body  { grid-area: body; }
+.intro-media { grid-area: media; }
+@media (max-width: 760px) {
+  .intro-split {
+    grid-template-columns: 1fr;
+    row-gap: 0;
+    grid-template-areas:
+      "head"
+      "media"
+      "body";
+  }
+  /* Stacked: let the image sit close under the text above it (just the text's
+     own margin), but keep comfortable breathing room below it. */
+  .intro-media { margin-bottom: clamp(1.5rem, 5vw, 2rem); }
+}
+
 /* ---- App showcase ---- */
 .app-shot {
   width: 100%;
