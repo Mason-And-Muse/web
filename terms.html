@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>
+    // Apply a saved theme override before paint to avoid a flash of the wrong palette.
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+  <title>Terms of Use - Mason &amp; Muse, LLC</title>
+  <meta name="description" content="Terms of use for the Mason &amp; Muse, LLC website." />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#faf8f4" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#1f1c18" media="(prefers-color-scheme: dark)" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Terms of Use - Mason &amp; Muse, LLC" />
+  <meta property="og:url" content="https://masonandmuse.com/terms.html" />
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">Mason <span class="amp">&amp;</span> Muse</a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="apps.html">Apps</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li>
+            <button class="theme-toggle" type="button" aria-label="Switch color theme">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"></circle>
+                <path d="M12 3 a 9 9 0 0 1 0 18 Z" fill="currentColor"></path>
+              </svg>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="container measure">
+        <hgroup>
+          <p class="eyebrow">Legal</p>
+          <h1>Terms of use</h1>
+        </hgroup>
+        <hr class="rule" />
+        <p class="muted">Last updated: June 2026</p>
+
+        <p>
+          This website (masonandmuse.com) is operated by Mason &amp; Muse, LLC ("I", "me").
+          By using the website you agree to these terms. These terms govern the website
+          only; your use of any Mason &amp; Muse app is governed by that app's own license
+          agreement and privacy policy, available from its App Store listing.
+        </p>
+
+        <h2>Content and intellectual property</h2>
+        <p>
+          All content on this website - text, graphics, logos, and the "Mason &amp; Muse"
+          name and marks - is owned by Mason &amp; Muse, LLC or its licensors and may not
+          be reproduced or used without permission, except for personal, non-commercial
+          viewing.
+        </p>
+
+        <h2>No warranty; limitation of liability</h2>
+        <p>
+          The website and its content are provided "as is," for general information,
+          without warranties of any kind, express or implied, to the maximum extent
+          permitted by law. To the maximum extent permitted by law, I am not liable for
+          any damages arising from your use of, or inability to use, the website. Nothing
+          in these terms excludes liability that cannot be excluded under applicable law,
+          or limits non-waivable consumer rights in your jurisdiction.
+        </p>
+
+        <h2>Privacy</h2>
+        <p>
+          My handling of information is described in the
+          <a href="privacy.html">privacy policy</a>. This site runs no analytics or
+          tracking; it is hosted on GitHub Pages, whose handling of standard server logs
+          is governed by GitHub's privacy statement.
+        </p>
+
+        <h2>General</h2>
+        <p>
+          These terms are governed by the laws of the State of Vermont, U.S.A. I may
+          update these terms - if I do I'll update this page with a new effective date.
+          Questions: <a href="mailto:info@masonandmuse.com">info@masonandmuse.com</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 Mason &amp; Muse, LLC · Vermont, USA</span>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="about.html">About</a>
+        <a href="apps.html">Apps</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="theme.js"></script>
+</body>
+</html>

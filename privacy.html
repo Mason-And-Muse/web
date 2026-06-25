@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>
+    // Apply a saved theme override before paint to avoid a flash of the wrong palette.
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+  <title>Privacy - Mason &amp; Muse, LLC</title>
+  <meta name="description" content="Privacy policy for Mason &amp; Muse, LLC and its apps." />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#faf8f4" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#1f1c18" media="(prefers-color-scheme: dark)" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Privacy - Mason &amp; Muse, LLC" />
+  <meta property="og:url" content="https://masonandmuse.com/privacy.html" />
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">Mason <span class="amp">&amp;</span> Muse</a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="apps.html">Apps</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li>
+            <button class="theme-toggle" type="button" aria-label="Switch color theme">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"></circle>
+                <path d="M12 3 a 9 9 0 0 1 0 18 Z" fill="currentColor"></path>
+              </svg>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="container measure">
+        <hgroup>
+          <p class="eyebrow">Legal</p>
+          <h1>Privacy policy</h1>
+        </hgroup>
+        <hr class="rule" />
+        <p class="muted">Last updated: June 2026</p>
+
+        <p>
+          This policy covers the Mason &amp; Muse website (masonandmuse.com), operated by
+          Mason &amp; Muse, LLC. Each of my apps has its own privacy policy that governs
+          how that app handles your information - see the app's App Store listing for
+          details.
+        </p>
+
+        <h2>The short version</h2>
+        <p>
+          This website doesn't run analytics or tracking, sets no advertising cookies,
+          and doesn't try to identify you or follow you around the web. Simple!
+        </p>
+
+        <h2>Server logs</h2>
+        <p>
+          The site is hosted on GitHub Pages. Like most web hosts, GitHub records standard
+          technical request information (such as IP addresses and browser details) in its
+          server logs. That handling is governed by
+          <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>,
+          and I don't have access to individually identifiable analytics about your visit.
+        </p>
+
+        <h2>Email</h2>
+        <p>
+          If you <a href="mailto: info@masonandmuse.com">contact me by email</a>, I receive the information you choose to share
+          (your email address and message) so I can respond. I use it only to
+          reply to you and don't sell it or use it for marketing.
+        </p>
+
+        <h2>Changes</h2>
+        <p>
+          I may update this policy from time to time. When I do, I'll revise the date at
+          the top of this page.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          Questions about privacy? Email me at
+          <a href="mailto:info@masonandmuse.com">info@masonandmuse.com</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 Mason &amp; Muse, LLC · Vermont, USA</span>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="about.html">About</a>
+        <a href="apps.html">Apps</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="theme.js"></script>
+</body>
+</html>

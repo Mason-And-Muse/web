@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>
+    // Apply a saved theme override before paint to avoid a flash of the wrong palette.
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+  <title>Apps - Mason &amp; Muse, LLC</title>
+  <meta name="description" content="Apps by Mason &amp; Muse - including Oh My Groceries!, a shareable shopping list that keeps your personal information private." />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#faf8f4" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#1f1c18" media="(prefers-color-scheme: dark)" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Apps - Mason &amp; Muse, LLC" />
+  <meta property="og:description" content="Apps by Mason &amp; Muse - including Oh My Groceries!, a shareable shopping list that keeps your personal information private." />
+  <meta property="og:url" content="https://masonandmuse.com/apps.html" />
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">Mason <span class="amp">&amp;</span> Muse</a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="apps.html" aria-current="page">Apps</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li>
+            <button class="theme-toggle" type="button" aria-label="Switch color theme">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"></circle>
+                <path d="M12 3 a 9 9 0 0 1 0 18 Z" fill="currentColor"></path>
+              </svg>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="container">
+        <hgroup>
+          <p class="eyebrow">My apps</p>
+          <h1 class="measure">Now I've done it.</h1>
+        </hgroup>
+      </div>
+    </section>
+
+    <!-- Oh My Groceries! -->
+    <section class="section-tight">
+      <div class="container split">
+        <div>
+          <span class="badge">Version too.oh! - launching this fall</span>
+          <h2>Oh My Groceries!</h2>
+          <p class="lead muted">
+            The shareable shopping list app that keeps your personal information private.
+            No ads, no tracking, no signing up for yet another account and getting all that stupid
+            spam. You deserve to have a good product, not to be an unwitting one.
+          </p>
+          <p class="muted">
+            Have your list and eat it too! Share with your shopping co-conspiritors,
+            easily categorize and track what you need. Available now on
+            iPhone, with a worldwide version too.oh! arriving this fall.
+          </p>
+          <p>
+            <span class="tag">iPhone</span>
+            <span class="tag">Mac soon</span>
+            <span class="tag">Available now</span>
+          </p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="https://apps.apple.com/us/app/oh-my-groceries-shopping-list/id1479895009">Download on the App Store</a>
+          </div>
+        </div>
+        <div>
+          <img class="app-shot" src="images/oh-my-groceries.png" width="1200" height="1004"
+               alt="Oh My Groceries! - a shareable grocery list app for iPhone" />
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 Mason &amp; Muse, LLC · Vermont, USA</span>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="about.html">About</a>
+        <a href="apps.html">Apps</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="theme.js"></script>
+</body>
+</html>

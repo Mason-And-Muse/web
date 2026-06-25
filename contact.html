@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>
+    // Apply a saved theme override before paint to avoid a flash of the wrong palette.
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+  <title>Contact - Mason &amp; Muse, LLC</title>
+  <meta name="description" content="Get in touch with Mason &amp; Muse, LLC - an independent app studio in Vermont. Email info@masonandmuse.com." />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#faf8f4" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#1f1c18" media="(prefers-color-scheme: dark)" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Contact - Mason &amp; Muse, LLC" />
+  <meta property="og:description" content="Get in touch with Mason &amp; Muse, LLC - an independent app studio in Vermont." />
+  <meta property="og:url" content="https://masonandmuse.com/contact.html" />
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">Mason <span class="amp">&amp;</span> Muse</a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="apps.html">Apps</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+          <li>
+            <button class="theme-toggle" type="button" aria-label="Switch color theme">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"></circle>
+                <path d="M12 3 a 9 9 0 0 1 0 18 Z" fill="currentColor"></path>
+              </svg>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="container">
+        <hgroup>
+          <p class="eyebrow">Get in touch</p>
+          <h1 class="measure">Seriously. What's up? I'd love to hear from you.</h1>
+        </hgroup>
+        <hr class="rule" />
+        <p class="lead measure muted">
+          Questions, support requests, or just want to say hello? Email me directly - I'm
+          sitting here by my computer... How long are you going to make me wait?
+        </p>
+
+        <div class="split" style="margin-top:2.5rem; align-items:start;">
+          <dl class="detail-list">
+            <dt>Hello</dt>
+            <dd><a href="mailto:hello@masonandmuse.com">hello@masonandmuse.com</a></dd>
+
+            <dt>Support</dt>
+            <dd><a href="mailto:info@masonandmuse.com?subject=Support%20request">info@masonandmuse.com</a></dd>
+
+            <dt>Location</dt>
+            <dd>Vermont, United States</dd>
+          </dl>
+
+          <dl class="detail-list">
+            <dt>The company</dt>
+            <dd>Mason &amp; Muse, LLC<br />
+              <span class="muted" style="font-size:0.95rem;">It's me, in the woods, building apps for Apple platforms.</span></dd>
+
+            <dt>On the App Store</dt>
+            <dd><a href="https://apps.apple.com/us/app/oh-my-groceries-shopping-list/id1479895009">Oh My Groceries!</a></dd>
+
+            <dt>Privacy</dt>
+            <dd><a href="privacy.html">Privacy policy</a></dd>
+          </dl>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 Mason &amp; Muse, LLC · Vermont, USA</span>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="about.html">About</a>
+        <a href="apps.html">Apps</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="theme.js"></script>
+</body>
+</html>
