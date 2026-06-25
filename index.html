@@ -3,104 +3,166 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mason &amp; Muse, LLC</title>
-  <meta name="description" content="Mason &amp; Muse, LLC" />
+  <script>
+    // Apply a saved theme override before paint to avoid a flash of the wrong palette.
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+  <title>Mason &amp; Muse - Bespoke apps for Apple platforms</title>
+  <meta name="description" content="Mason &amp; Muse, LLC is an independent studio crafting bespoke, privacy-respecting apps for iPhone, iPad, and Mac from the heart of Vermont." />
   <meta name="color-scheme" content="light dark" />
   <meta name="theme-color" content="#faf8f4" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#1f1c18" media="(prefers-color-scheme: dark)" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Mason &amp; Muse, LLC" />
-  <meta property="og:description" content="Mason &amp; Muse, LLC" />
+  <meta property="og:title" content="Mason &amp; Muse - Bespoke apps for Apple platforms" />
+  <meta property="og:description" content="An independent studio crafting bespoke, privacy-respecting apps for iPhone, iPad, and Mac from the heart of Vermont." />
   <meta property="og:url" content="https://masonandmuse.com/" />
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-
-  <style>
-    :root {
-      --bg-top: #faf8f4;
-      --bg-bottom: #efe9df;
-      --ink: #25201b;
-      --muted: #8a7f72;
-      --rule: #c2a878;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg-top: #1f1c18;
-        --bg-bottom: #14110e;
-        --ink: #f3ece1;
-        --muted: #a99a87;
-        --rule: #7a6647;
-      }
-    }
-
-    * { box-sizing: border-box; }
-    html, body { height: 100%; margin: 0; }
-
-    body {
-      min-height: 100svh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      background: linear-gradient(160deg, var(--bg-top), var(--bg-bottom));
-      color: var(--ink);
-      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-
-    main {
-      text-align: center;
-      animation: rise 1.1s cubic-bezier(.2, .7, .2, 1) both;
-    }
-
-    .wordmark {
-      margin: 0;
-      font-family:"Hoefler Text",  "Palatino Linotype", "Palatino", serif;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      line-height: 1.05;
-      font-size: clamp(2.6rem, 9vw, 5.5rem);
-    }
-    .wordmark .amp {
-      font-style: italic;
-      font-weight: 400;
-      padding: 0 0.04em;
-    }
-
-    .rule {
-      width: clamp(48px, 12vw, 96px);
-      height: 1px;
-      margin: 1.7rem auto;
-      background: var(--rule);
-      border: 0;
-    }
-
-    .legal {
-      margin: 0;
-      font-size: clamp(0.7rem, 2.4vw, 0.82rem);
-      letter-spacing: 0.34em;
-      text-transform: uppercase;
-      color: var(--muted);
-      padding-left: 0.34em; /* optical centering for trailing letter-spacing */
-    }
-
-    @keyframes rise {
-      from { opacity: 0; transform: translateY(14px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      main { animation: none; }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">Mason <span class="amp">&amp;</span> Muse</a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="apps.html">Apps</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li>
+            <button class="theme-toggle" type="button" aria-label="Switch color theme">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"></circle>
+                <path d="M12 3 a 9 9 0 0 1 0 18 Z" fill="currentColor"></path>
+              </svg>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
   <main>
-    <h1 class="wordmark">Mason <span class="amp">&amp;</span> Muse</h1>
-    <hr class="rule" />
-    <p class="legal">LLC</p>
+    <section class="hero">
+      <div class="container">
+        <h1 class="wordmark">Mason <span class="amp">&amp;</span> Muse<span class="legal">LLC</span></h1>
+        <p class="lead">Bespoke artisanal apps, lovingly handcrafted one pixel at a time in the heart of Vermont.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="apps.html">What I've done</a>
+          <a class="btn btn-ghost" href="about.html">About me</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hi, I'm Brian -->
+    <section>
+      <div class="container">
+        <div class="split">
+          <div>
+            <hgroup>
+              <p class="eyebrow">Hi, I'm Brian</p>
+              <h2>Mason <span class="amp">&amp;</span> Muse: two names, just one me.</h2>
+            </hgroup>
+            <p class="lead muted">
+              I'm a solo app developer in Vermont, and I launched Mason &amp; Muse as the vehicle to
+              release softare I design and build here, in the woods, myself.  My wife
+              thought this was a terrible idea. Help me not embarrass myself!
+            </p>
+            <p class="muted">
+              We've known each other for a while now so I'll be honest. All those extra hours
+              I spend getting something to align just right, or adding a little detail that
+              isn't technically needed? It's not just for you. It's also for me. I wouldn't do
+              this after all these years if I didn't love it. I do. It's a labor of love.  There, I said it. 
+            </p>
+            <a class="btn btn-ghost" href="about.html">More about me</a>
+          </div>
+          <div>
+            <img class="portrait" src="images/brian.jpg" width="800" height="800"
+                 alt="Brian, founder of Mason &amp; Muse" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What I make -->
+    <section>
+      <div class="container">
+        <hgroup>
+          <p class="eyebrow">What I make</p>
+          <h2 class="measure">Apps with personality.</h2>
+        </hgroup>
+        <p class="lead measure muted">
+          I make software that doesn't suck, for iPhone, iPad, and Mac - and you! Most definitely you.
+        </p>
+        <div class="grid" style="margin-top:2.5rem;">
+          <div class="card">
+            <h3>Designed for Apple platforms</h3>
+            <p class="muted">I've been geeking out on Apple products
+            since 1977. That means I know what makes good
+            Apple software. It also means I'm old - shhh.</p>
+          </div>
+          <div class="card">
+            <h3>Privacy by default</h3>
+            <p class="muted">I don't only make apps, I use them. And I don't like
+            companies harvesting my personal data. So I don't harvest yours. Simple!</p>
+          </div>
+          <div class="card">
+            <h3>Software that doesn't suck</h3>
+            <p class="muted">I use my own software - I care what it says, what it does, how
+            it looks. It's weird to say but that seems rare these days. Enjoy!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured app -->
+    <section>
+      <div class="container">
+        <div class="split">
+          <div>
+            <hgroup>
+              <p class="eyebrow">Featured App</p>
+              <h2>Oh My Groceries!</h2>
+            </hgroup>
+            <span class="badge">Version too.oh - launching this fall</span>
+            <p class="lead muted">The shareable shopping list app that keeps your personal information private.
+            No ads, no tracking, no signing up for yet another account and getting all that stupid
+            spam. You deserve to have a good product, not to be an unwitting one.</p>
+            <div class="btn-row">
+              <a class="btn btn-primary" href="https://apps.apple.com/us/app/oh-my-groceries-shopping-list/id1479895009">Download on the App Store</a>
+              <a class="btn btn-ghost" href="apps.html">Learn more</a>
+            </div>
+          </div>
+          <div>
+            <img class="app-shot" src="images/oh-my-groceries.png" width="1200" height="1004"
+                 alt="Oh My Groceries! - a shareable grocery list app for iPhone" />
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 Mason &amp; Muse, LLC · Vermont, USA</span>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="about.html">About</a>
+        <a href="apps.html">Apps</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="theme.js"></script>
 </body>
 </html>

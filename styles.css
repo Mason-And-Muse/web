@@ -1,0 +1,406 @@
+/* Mason & Muse, LLC - shared design system
+   No build step. Plain CSS, served as-is via GitHub Pages. */
+
+:root {
+  --bg-top: #faf8f4;
+  --bg-bottom: #efe9df;
+  --ink: #25201b;
+  --muted: #8a7f72;
+  --rule: #c2a878;
+  --accent: #9c7a3c;
+  --card: #fffdf9;
+  --card-border: #e7ddcb;
+  --shadow: 0 1px 2px rgba(37, 32, 27, 0.04), 0 12px 32px rgba(37, 32, 27, 0.07);
+
+  --serif: "Palatino Linotype", Palatino, "Hoefler Text", Georgia, "Times New Roman", serif;
+  --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  --maxw: 1080px;
+  --gutter: clamp(1.25rem, 5vw, 3rem);
+}
+
+/* Dark palette - applied when the system prefers dark (unless the visitor has
+   forced light), and when the visitor explicitly chooses dark. The two blocks
+   share the same values; keep them in sync. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-top: #1f1c18;
+    --bg-bottom: #14110e;
+    --ink: #f3ece1;
+    --muted: #a99a87;
+    --rule: #7a6647;
+    --accent: #c9a865;
+    --card: #211d18;
+    --card-border: #322b22;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 14px 36px rgba(0, 0, 0, 0.4);
+  }
+}
+:root[data-theme="dark"] {
+  --bg-top: #1f1c18;
+  --bg-bottom: #14110e;
+  --ink: #f3ece1;
+  --muted: #a99a87;
+  --rule: #7a6647;
+  --accent: #c9a865;
+  --card: #211d18;
+  --card-border: #322b22;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 14px 36px rgba(0, 0, 0, 0.4);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body { margin: 0; }
+
+body {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(160deg, var(--bg-top), var(--bg-bottom)) no-repeat;
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+a { color: inherit; }
+
+/* ---- Header / nav ---- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: saturate(1.4) blur(10px);
+  -webkit-backdrop-filter: saturate(1.4) blur(10px);
+  background: color-mix(in srgb, var(--bg-top) 82%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--rule) 35%, transparent);
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1rem;
+}
+.brand {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2.1rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-links li { display: flex; align-items: center; }
+.nav-links a {
+  position: relative;
+  text-decoration: none;
+  font-size: 0.82rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.2s ease;
+}
+/* Active-page underline drawn as an overlay so it reserves no layout space,
+   keeping each link's box symmetric (so the nav items center cleanly). */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-links a[aria-current="page"] { color: var(--ink); }
+.nav-links a[aria-current="page"]::after { opacity: 1; }
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: 0;
+  line-height: 0;
+  color: var(--muted);
+  cursor: pointer;
+  border-radius: 50%;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.theme-toggle:hover { color: var(--ink); transform: rotate(180deg); }
+.theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.theme-toggle svg { display: block; }
+
+/* On narrow screens, stack the wordmark above a centered row of links so the
+   full nav (including the theme toggle) stays on screen. */
+@media (max-width: 600px) {
+  .nav { flex-direction: column; gap: 0.75rem; }
+  .nav-links { flex-wrap: wrap; justify-content: center; }
+}
+
+/* ---- Main / sections ---- */
+main { flex: 1; }
+section { padding-block: clamp(2rem, 4.5vw, 2.75rem); }
+.section-tight { padding-block: clamp(2rem, 4.5vw, 2.75rem); }
+/* A short gold rule between every pair of stacked sections - the same motif as
+   the page accents. Drawn as an overlay at the section boundary so it adds no
+   layout shift. Left-aligned to the content column to match the heading rules. */
+section + section { position: relative; }
+section + section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: max(var(--gutter), (100% - var(--maxw)) / 2 + var(--gutter));
+  width: clamp(48px, 14vw, 240px);
+  height: 1px;
+  background: var(--rule);
+}
+/* The one exception: the divider just below the hero buttons stays centered. */
+.hero + section::before {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* hgroup wraps each eyebrow/kicker together with its heading; it carries no
+   spacing of its own - the eyebrow and heading margins do the work. */
+hgroup { margin: 0; }
+
+/* The eyebrow/kicker style is self-contained (sets its own font + weight) so it
+   looks identical whether it's a <p> tagline inside an hgroup or a real heading
+   (e.g. an <h2>) that happens to be styled as a kicker. */
+.eyebrow {
+  margin: 0 0 0.9rem;
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 0.75rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.1; }
+h1 { font-size: clamp(2.4rem, 7vw, 4.4rem); letter-spacing: 0.01em; margin: 0; }
+h2 { font-size: clamp(1.8rem, 4.5vw, 2.7rem); margin: 0 0 1rem; }
+h3 { font-size: 1.3rem; margin: 0 0 0.5rem; }
+
+p { margin: 0 0 1.1rem; }
+.lead { font-size: clamp(1.15rem, 2.6vw, 1.4rem); color: var(--ink); }
+.muted { color: var(--muted); }
+.measure { max-width: 60ch; }
+
+/* ---- Hero ---- */
+.hero {
+  text-align: center;
+  padding-block: clamp(4rem, 12vw, 8rem) clamp(2rem, 4.5vw, 2.75rem);
+  animation: rise 1s cubic-bezier(.2, .7, .2, 1) both;
+}
+.wordmark {
+  font-family: var(--serif);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.04;
+  font-size: clamp(2.8rem, 10vw, 6rem);
+  margin: 0;
+}
+.amp { font-style: italic; font-weight: 400; color: var(--accent); padding: 0 0.04em; }
+/* The "LLC" sits under the wordmark as part of the company name — small, gold,
+   and letter-spaced, echoing the original placeholder. */
+.legal {
+  display: block;
+  margin-top: 0.7rem;
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: clamp(0.7rem, 2.4vw, 0.82rem);
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding-left: 0.34em; /* optical centering for the trailing letter-spacing */
+}
+.hero .lead { margin: 1.6rem auto 0; max-width: 34ch; color: var(--muted); font-style: italic; }
+
+/* ---- Decorative rule ---- */
+.rule {
+  width: clamp(48px, 14vw, 240px);
+  height: 1px;
+  margin: 1.7rem 0;
+  background: var(--rule);
+  border: 0;
+}
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  padding: 0.7em 1.4em;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  transition: transform 0.15s ease, background 0.2s ease, color 0.2s ease;
+}
+.btn-primary { background: var(--accent); color: #fffdf9; }
+.btn-primary:hover { transform: translateY(-1px); }
+.btn-ghost { color: var(--ink); }
+.btn-ghost:hover { background: color-mix(in srgb, var(--accent) 12%, transparent); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+.hero .btn-row { justify-content: center; margin-top: 2rem; }
+
+/* ---- Grid of cards ---- */
+.grid {
+  display: grid;
+  gap: clamp(1.2rem, 3vw, 2rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: clamp(1.4rem, 3vw, 2rem);
+  box-shadow: var(--shadow);
+}
+.card h3 { margin-top: 0; }
+.card p:last-child { margin-bottom: 0; }
+
+/* Four-card "values" grid: stack on phones, 2×2 on tablets, 3-up on desktop.
+   When it's 3-up the 4th card wraps to its own row - place it in the middle
+   column so the lone card is centered rather than stranded on the left. */
+.grid-4 { grid-template-columns: 1fr; }
+@media (min-width: 600px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 900px) {
+  .grid-4 { grid-template-columns: repeat(3, 1fr); }
+  .grid-4 > :last-child { grid-column: 2; }
+}
+
+/* ---- Feature / split layout ---- */
+.split {
+  display: grid;
+  gap: clamp(2rem, 6vw, 4rem);
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+}
+/* Top-align the columns instead of centering them (for text-only splits whose
+   two sides differ in length). */
+.split-top { align-items: start; }
+@media (max-width: 760px) { .split { grid-template-columns: 1fr; } }
+
+/* ---- App showcase ---- */
+.app-shot {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  margin-inline: auto;
+  display: block;
+}
+.portrait {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  margin-inline: auto;
+  display: block;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(37, 32, 27, 0.12), 0 18px 40px rgba(37, 32, 27, 0.16);
+}
+@media (prefers-color-scheme: dark) {
+  .portrait { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4), 0 18px 44px rgba(0, 0, 0, 0.5); }
+}
+
+.app-shot-placeholder {
+  aspect-ratio: 9 / 16;
+  max-width: 300px;
+  margin-inline: auto;
+  border-radius: 28px;
+  border: 1px dashed var(--rule);
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+  padding: 1.5rem;
+}
+.badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  border-radius: 999px;
+  padding: 0.25em 0.8em;
+  margin-bottom: 1rem;
+}
+.tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-right: 0.6rem;
+}
+
+/* ---- Definition list (contact) ---- */
+.detail-list { margin: 0; }
+.detail-list dt {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.3rem;
+}
+.detail-list dd { margin: 0 0 1.6rem; font-size: 1.1rem; }
+.detail-list a { text-decoration-color: var(--rule); text-underline-offset: 3px; }
+
+/* ---- Footer ---- */
+.site-footer {
+  border-top: 1px solid color-mix(in srgb, var(--rule) 35%, transparent);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 2rem;
+}
+.footer-inner a { color: var(--muted); text-decoration: none; }
+.footer-inner a:hover { color: var(--ink); }
+.footer-links { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+
+/* ---- Motion ---- */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero { animation: none; }
+}
